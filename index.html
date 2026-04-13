@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AgeTech Connect: Older Adult Engagement Prototype</title>
+  <title>Waterlily: Guided Planning Prototype</title>
   <style>
     * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f6f8fc;
+      background: #f4faf8;
       color: #1f2937;
     }
     header {
-      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      background: linear-gradient(135deg, #0f766e, #14b8a6);
       color: white;
       padding: 32px 40px;
     }
@@ -48,87 +48,97 @@
       color: #6b7280;
       line-height: 1.7;
     }
-    .grid {
+    .input-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 18px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 16px;
     }
-    .tool {
-      background: #fafafa;
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      padding: 18px;
+    .input-box {
+      background: #f9fafb;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      padding: 12px;
     }
-    .tool h3 {
-      margin: 0 0 8px;
-      font-size: 20px;
-    }
-    .tag {
-      display: inline-block;
-      font-size: 13px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: #eef2ff;
-      color: #4338ca;
-      margin-bottom: 10px;
-    }
-    .tool p {
+    .input-box small {
+      display: block;
       color: #6b7280;
-      line-height: 1.6;
-      margin-bottom: 14px;
+      margin-bottom: 6px;
     }
-    .btn-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+    .input-box strong {
+      font-size: 16px;
     }
     button {
       border: none;
       border-radius: 10px;
-      padding: 10px 14px;
+      padding: 10px 16px;
       font-size: 14px;
       cursor: pointer;
-    }
-    .primary {
-      background: #4f46e5;
+      background: #0f766e;
       color: white;
+      margin-top: 16px;
     }
-    .secondary {
-      background: #f3f4f6;
-      color: #111827;
-      border: 1px solid #d1d5db;
+    .highlight {
+      background: #ecfdf5;
+      border-left: 5px solid #10b981;
+      padding: 16px;
+      border-radius: 12px;
+      margin-top: 16px;
+      line-height: 1.7;
+    }
+    .timeline {
+      margin-top: 18px;
+      border-left: 4px solid #14b8a6;
+      padding-left: 20px;
+    }
+    .timeline-step {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .timeline-step::before {
+      content: "";
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #0f766e;
+      position: absolute;
+      left: -29px;
+      top: 5px;
+    }
+    .timeline-step h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+    }
+    .timeline-step p {
+      margin: 0;
+      color: #6b7280;
+      line-height: 1.6;
     }
     .two-col {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1fr 1fr;
       gap: 18px;
     }
-    textarea {
-      width: 100%;
-      min-height: 130px;
-      border: 1px solid #d1d5db;
+    .cost-box {
+      background: #f0fdfa;
+      border: 1px solid #99f6e4;
       border-radius: 12px;
-      padding: 12px;
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-      margin-top: 10px;
+      padding: 14px;
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+    .cost-box strong {
+      display: block;
+      color: #0f766e;
+      margin-bottom: 6px;
     }
     ul {
       padding-left: 18px;
       line-height: 1.7;
       color: #374151;
     }
-    .highlight {
-      background: #f5f3ff;
-      border-left: 5px solid #7c3aed;
-      padding: 16px;
-      border-radius: 12px;
-      margin-top: 16px;
-      line-height: 1.7;
-    }
     @media (max-width: 900px) {
-      .grid, .two-col {
+      .input-grid, .two-col {
         grid-template-columns: 1fr;
       }
     }
@@ -136,9 +146,9 @@
 </head>
 <body>
   <header>
-    <h1>AgeTech Connect: Older Adult Engagement Prototype</h1>
+    <h1>Waterlily: Guided Planning Prototype</h1>
     <p>
-      This prototype was created as a proposed improvement for AgeTech Connect. The goal is not to replace the company’s current work, but to support it by adding a more direct way for older adults to participate in the innovation process. Since AgeTech Connect already helps startups and innovators build solutions for aging populations, this prototype shows how the company could also involve older adults more directly through technology discovery, product testing, and user feedback.
+      This prototype was created as a proposed improvement for Waterlily. The goal is not to change Waterlily’s purpose, but to make its long-term care planning experience easier for older adults and families to understand. Since Waterlily already helps users think about future care needs and costs, this prototype shows how the same idea could be presented in a more guided, step-by-step, and less overwhelming way.
     </p>
   </header>
 
@@ -146,75 +156,89 @@
     <div class="card">
       <h2>Why this prototype was created</h2>
       <p class="muted">
-        In my paper, I explain that one limitation of AgeTech Connect is that it mainly supports founders, investors, and professionals, while older adults are usually not the direct users of the platform itself. This prototype was created to show one possible improvement: a simple engagement portal where older adults can explore new technologies, try early concepts, and give feedback. This would help AgeTech Connect make its innovation process more user-centered and more closely connected to the real experiences of older adults.
+        In my paper, I explain that Waterlily is valuable because it helps families prepare for long-term care before a crisis happens. However, one challenge is that care planning can still feel stressful and difficult for some users, especially if they are not comfortable with financial or medical information. This prototype was created to show how Waterlily could improve its current platform by making planning more visual, more guided, and easier to follow step by step.
       </p>
       <div class="highlight">
-        <strong>Main idea:</strong> This prototype helps AgeTech Connect move from only supporting innovation behind the scenes to also including older adults in the process of shaping and improving those innovations.
+        <strong>Main idea:</strong> This prototype keeps Waterlily’s long-term care planning purpose, but presents it in a simpler and more supportive format for older adults and their families.
       </div>
     </div>
 
     <div class="card">
-      <h2>Example technologies older adults could explore</h2>
-      <div class="grid">
-        <div class="tool">
-          <div class="tag">Aging in Place</div>
-          <h3>Fall Detection Device</h3>
+      <h2>Planning profile</h2>
+      <p class="muted">
+        This section shows the type of simple information a user could enter before receiving a guided plan.
+      </p>
+      <div class="input-grid">
+        <div class="input-box">
+          <small>Age range</small>
+          <strong>70–79</strong>
+        </div>
+        <div class="input-box">
+          <small>Living situation</small>
+          <strong>Lives alone</strong>
+        </div>
+        <div class="input-box">
+          <small>Current support level</small>
+          <strong>Moderate support needed</strong>
+        </div>
+        <div class="input-box">
+          <small>Family support</small>
+          <strong>Caregiver nearby</strong>
+        </div>
+      </div>
+      <button>Generate Guided Plan</button>
+    </div>
+
+    <div class="card">
+      <h2>Step-by-step care timeline</h2>
+      <div class="timeline">
+        <div class="timeline-step">
+          <h3>Now</h3>
           <p>
-            A home and wearable safety tool designed to detect falls and notify family members or caregivers quickly.
+            Review current support needs, organize medications, and identify who will help with future care decisions.
           </p>
-          <div class="btn-row">
-            <button class="primary">Preview Tool</button>
-            <button class="secondary">Share Feedback</button>
-          </div>
         </div>
 
-        <div class="tool">
-          <div class="tag">Health Support</div>
-          <h3>Medication Reminder App</h3>
+        <div class="timeline-step">
+          <h3>Next 12 months</h3>
           <p>
-            A simple reminder system with large text, voice prompts, and easy scheduling for everyday medication needs.
+            Compare home care options, review financial planning strategies, and check whether aging in place will remain realistic.
           </p>
-          <div class="btn-row">
-            <button class="primary">Preview Tool</button>
-            <button class="secondary">Share Feedback</button>
-          </div>
         </div>
 
-        <div class="tool">
-          <div class="tag">Social Connection</div>
-          <h3>Video Check-In Tool</h3>
+        <div class="timeline-step">
+          <h3>Longer term</h3>
           <p>
-            A simplified communication tool that helps older adults connect with family without complicated setup steps.
+            Prepare for possible increases in care needs, explore assisted living options if necessary, and update cost planning over time.
           </p>
-          <div class="btn-row">
-            <button class="primary">Preview Tool</button>
-            <button class="secondary">Share Feedback</button>
-          </div>
         </div>
       </div>
     </div>
 
     <div class="two-col">
       <div class="card">
-        <h2>Older adult feedback section</h2>
-        <p class="muted">
-          This section represents how AgeTech Connect could collect direct input from older adults after they try or review a technology.
-        </p>
-        <label for="feedback"><strong>What did you like or find difficult to use?</strong></label>
-        <textarea id="feedback" placeholder="Example: I liked the large text, but the instructions could be shorter and easier to follow."></textarea>
-        <div class="btn-row" style="margin-top: 12px;">
-          <button class="primary">Submit Feedback</button>
-          <button class="secondary">Save Response</button>
+        <h2>Estimated care cost outlook</h2>
+        <div class="cost-box">
+          <strong>Home care estimate</strong>
+          $3,200–$4,500 per month depending on support needs
+        </div>
+        <div class="cost-box">
+          <strong>Safety technology estimate</strong>
+          $300–$900 for home monitoring and reminder tools
+        </div>
+        <div class="cost-box">
+          <strong>Future assisted care estimate</strong>
+          $40,000–$60,000 annually depending on location and care level
         </div>
       </div>
 
       <div class="card">
-        <h2>How this helps AgeTech Connect</h2>
+        <h2>Recommended next actions</h2>
         <ul>
-          <li>Gives older adults a direct voice in product improvement</li>
-          <li>Helps startups understand real usability challenges</li>
-          <li>Creates stronger connections between innovation and actual user needs</li>
-          <li>Makes the AgeTech ecosystem more inclusive and practical</li>
+          <li>Talk with family about support responsibilities</li>
+          <li>Compare local home care options</li>
+          <li>Review a simple yearly care budget</li>
+          <li>Check in again after six months as needs change</li>
         </ul>
       </div>
     </div>
