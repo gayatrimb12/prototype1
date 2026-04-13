@@ -3,155 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AgeTech Connect - Older Adult Feedback Portal</title>
+  <title>AgeTech Connect: Older Adult Engagement Prototype</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f4f7fb;
+      background: #f6f8fc;
       color: #1f2937;
     }
-
     header {
       background: linear-gradient(135deg, #4f46e5, #7c3aed);
       color: white;
-      padding: 28px 40px;
+      padding: 32px 40px;
     }
-
     header h1 {
-      margin: 0 0 8px;
+      margin: 0 0 10px;
       font-size: 32px;
     }
-
     header p {
       margin: 0;
-      max-width: 780px;
-      line-height: 1.6;
+      max-width: 850px;
+      line-height: 1.7;
       font-size: 16px;
     }
-
     .container {
-      max-width: 1200px;
+      max-width: 1150px;
       margin: 24px auto;
       padding: 0 20px 30px;
     }
-
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 20px;
-      margin-bottom: 24px;
-    }
-
     .card {
       background: white;
+      border: 1px solid #e5e7eb;
       border-radius: 18px;
       padding: 22px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-      border: 1px solid #e5e7eb;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
     }
-
-    .card h2 {
+    h2 {
       margin-top: 0;
-      font-size: 22px;
-    }
-
-    .muted {
-      color: #6b7280;
-      line-height: 1.6;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .pill {
-      background: #eef2ff;
-      color: #4338ca;
-      border: 1px solid #c7d2fe;
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-size: 14px;
-    }
-
-    .stats {
-      display: grid;
-      gap: 12px;
-    }
-
-    .stat-box {
-      background: #faf5ff;
-      border: 1px solid #ddd6fe;
-      border-radius: 14px;
-      padding: 14px;
-    }
-
-    .stat-box strong {
-      display: block;
-      font-size: 22px;
-      margin-bottom: 6px;
-      color: #5b21b6;
-    }
-
-    .section-title {
-      margin: 28px 0 16px;
       font-size: 24px;
     }
-
-    .tool-grid {
+    .muted {
+      color: #6b7280;
+      line-height: 1.7;
+    }
+    .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
+      margin-top: 18px;
     }
-
-    .tool-card {
-      background: white;
-      border-radius: 18px;
-      padding: 18px;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.05);
+    .tool {
+      background: #fafafa;
       border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 18px;
     }
-
-    .tool-card h3 {
+    .tool h3 {
       margin: 0 0 8px;
       font-size: 20px;
     }
-
-    .tool-card p {
-      margin: 0 0 14px;
-      color: #6b7280;
-      line-height: 1.55;
-    }
-
     .tag {
       display: inline-block;
-      background: #ede9fe;
-      color: #6d28d9;
-      border-radius: 999px;
-      padding: 6px 10px;
       font-size: 13px;
-      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #4338ca;
+      margin-bottom: 10px;
     }
-
-    .rating {
-      color: #f59e0b;
-      margin-bottom: 12px;
-      font-size: 18px;
+    .tool p {
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 14px;
     }
-
-    .buttons {
+    .btn-row {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
     }
-
     button {
       border: none;
       border-radius: 10px;
@@ -159,26 +90,21 @@
       font-size: 14px;
       cursor: pointer;
     }
-
     .primary {
       background: #4f46e5;
       color: white;
     }
-
     .secondary {
       background: #f3f4f6;
       color: #111827;
       border: 1px solid #d1d5db;
     }
-
-    .feedback-layout {
+    .two-col {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
-      gap: 20px;
-      margin-top: 24px;
+      gap: 18px;
     }
-
-    .feedback-box textarea {
+    textarea {
       width: 100%;
       min-height: 130px;
       border: 1px solid #d1d5db;
@@ -186,38 +112,23 @@
       padding: 12px;
       font-family: Arial, sans-serif;
       font-size: 14px;
-      resize: vertical;
       margin-top: 10px;
     }
-
-    .checklist {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    ul {
+      padding-left: 18px;
+      line-height: 1.7;
+      color: #374151;
     }
-
-    .checklist li {
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
+    .highlight {
+      background: #f5f3ff;
+      border-left: 5px solid #7c3aed;
+      padding: 16px;
       border-radius: 12px;
-      padding: 12px;
-      margin-bottom: 10px;
+      margin-top: 16px;
+      line-height: 1.7;
     }
-
-    footer {
-      margin-top: 28px;
-      padding: 18px 22px;
-      background: #eef2ff;
-      border: 1px solid #c7d2fe;
-      border-radius: 16px;
-      color: #3730a3;
-      line-height: 1.6;
-    }
-
     @media (max-width: 900px) {
-      .intro-grid,
-      .feedback-layout,
-      .tool-grid {
+      .grid, .two-col {
         grid-template-columns: 1fr;
       }
     }
@@ -225,127 +136,88 @@
 </head>
 <body>
   <header>
-    <h1>AgeTech Connect: Older Adult Feedback Portal</h1>
+    <h1>AgeTech Connect: Older Adult Engagement Prototype</h1>
     <p>
-      This prototype shows how AgeTech Connect could improve its current model by giving older adults
-      a direct role in exploring, testing, and reviewing technologies being developed for them.
-      Instead of only supporting startups behind the scenes, this version makes older adults active participants.
+      This prototype was created as a proposed improvement for AgeTech Connect. The goal is not to replace the company’s current work, but to support it by adding a more direct way for older adults to participate in the innovation process. Since AgeTech Connect already helps startups and innovators build solutions for aging populations, this prototype shows how the company could also involve older adults more directly through technology discovery, product testing, and user feedback.
     </p>
   </header>
 
   <div class="container">
-    <div class="intro-grid">
-      <div class="card">
-        <h2>Why this improvement matters</h2>
-        <p class="muted">
-          AgeTech Connect already does a strong job of building innovation and connecting startups, investors,
-          and healthcare partners. However, one limitation is that older adults are often not directly involved in the
-          experience. This portal closes that gap by creating a simple space where older adults can explore tools,
-          try early concepts, and share feedback that helps improve real products.
-        </p>
-        <div class="pill-row">
-          <span class="pill">Technology Discovery</span>
-          <span class="pill">User Testing</span>
-          <span class="pill">Direct Feedback</span>
-          <span class="pill">Inclusive Innovation</span>
-        </div>
+    <div class="card">
+      <h2>Why this prototype was created</h2>
+      <p class="muted">
+        In my paper, I explain that one limitation of AgeTech Connect is that it mainly supports founders, investors, and professionals, while older adults are usually not the direct users of the platform itself. This prototype was created to show one possible improvement: a simple engagement portal where older adults can explore new technologies, try early concepts, and give feedback. This would help AgeTech Connect make its innovation process more user-centered and more closely connected to the real experiences of older adults.
+      </p>
+      <div class="highlight">
+        <strong>Main idea:</strong> This prototype helps AgeTech Connect move from only supporting innovation behind the scenes to also including older adults in the process of shaping and improving those innovations.
       </div>
+    </div>
 
-      <div class="card">
-        <h2>Portal Snapshot</h2>
-        <div class="stats">
-          <div class="stat-box">
-            <strong>12</strong>
-            Technologies available to review
+    <div class="card">
+      <h2>Example technologies older adults could explore</h2>
+      <div class="grid">
+        <div class="tool">
+          <div class="tag">Aging in Place</div>
+          <h3>Fall Detection Device</h3>
+          <p>
+            A home and wearable safety tool designed to detect falls and notify family members or caregivers quickly.
+          </p>
+          <div class="btn-row">
+            <button class="primary">Preview Tool</button>
+            <button class="secondary">Share Feedback</button>
           </div>
-          <div class="stat-box">
-            <strong>4</strong>
-            Pilot-ready tools this month
+        </div>
+
+        <div class="tool">
+          <div class="tag">Health Support</div>
+          <h3>Medication Reminder App</h3>
+          <p>
+            A simple reminder system with large text, voice prompts, and easy scheduling for everyday medication needs.
+          </p>
+          <div class="btn-row">
+            <button class="primary">Preview Tool</button>
+            <button class="secondary">Share Feedback</button>
           </div>
-          <div class="stat-box">
-            <strong>86%</strong>
-            Users found descriptions easy to understand
+        </div>
+
+        <div class="tool">
+          <div class="tag">Social Connection</div>
+          <h3>Video Check-In Tool</h3>
+          <p>
+            A simplified communication tool that helps older adults connect with family without complicated setup steps.
+          </p>
+          <div class="btn-row">
+            <button class="primary">Preview Tool</button>
+            <button class="secondary">Share Feedback</button>
           </div>
         </div>
       </div>
     </div>
 
-    <h2 class="section-title">Featured technologies to explore</h2>
-    <div class="tool-grid">
-      <div class="tool-card">
-        <div class="tag">Aging in Place</div>
-        <h3>Smart Fall Detection Band</h3>
-        <div class="rating">★★★★☆</div>
-        <p>
-          A wearable device that detects sudden falls and alerts a caregiver or emergency contact.
-          Designed for older adults who want to remain safe while living independently.
-        </p>
-        <div class="buttons">
-          <button class="primary">Try Demo</button>
-          <button class="secondary">Give Feedback</button>
-        </div>
-      </div>
-
-      <div class="tool-card">
-        <div class="tag">Health Support</div>
-        <h3>Medication Reminder App</h3>
-        <div class="rating">★★★★★</div>
-        <p>
-          A simple daily reminder app with large text, voice alerts, and caregiver syncing
-          for medications and appointments.
-        </p>
-        <div class="buttons">
-          <button class="primary">Try Demo</button>
-          <button class="secondary">Give Feedback</button>
-        </div>
-      </div>
-
-      <div class="tool-card">
-        <div class="tag">Social Connection</div>
-        <h3>Family Video Check-In Tool</h3>
-        <div class="rating">★★★★☆</div>
-        <p>
-          A simplified communication tool that helps older adults join family video calls
-          without needing to manage multiple steps or confusing app settings.
-        </p>
-        <div class="buttons">
-          <button class="primary">Try Demo</button>
-          <button class="secondary">Give Feedback</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="feedback-layout">
-      <div class="card feedback-box">
-        <h2>Older adult feedback form</h2>
+    <div class="two-col">
+      <div class="card">
+        <h2>Older adult feedback section</h2>
         <p class="muted">
-          This section shows how AgeTech Connect could collect user feedback directly from older adults
-          before technologies are scaled more widely.
+          This section represents how AgeTech Connect could collect direct input from older adults after they try or review a technology.
         </p>
-        <label for="feedback"><strong>What was easy or difficult to use?</strong></label>
-        <textarea id="feedback" placeholder="Example: I liked the large text, but the setup instructions felt too long."></textarea>
-        <div class="buttons" style="margin-top:12px;">
+        <label for="feedback"><strong>What did you like or find difficult to use?</strong></label>
+        <textarea id="feedback" placeholder="Example: I liked the large text, but the instructions could be shorter and easier to follow."></textarea>
+        <div class="btn-row" style="margin-top: 12px;">
           <button class="primary">Submit Feedback</button>
-          <button class="secondary">Save for Later</button>
+          <button class="secondary">Save Response</button>
         </div>
       </div>
 
       <div class="card">
-        <h2>What AgeTech Connect learns</h2>
-        <ul class="checklist">
-          <li><strong>Ease of use:</strong> Are directions simple enough for older adults?</li>
-          <li><strong>Accessibility:</strong> Does the product use readable text and clear navigation?</li>
-          <li><strong>Value:</strong> Does the tool actually solve a real problem?</li>
-          <li><strong>Trust:</strong> Would users feel comfortable using it at home?</li>
+        <h2>How this helps AgeTech Connect</h2>
+        <ul>
+          <li>Gives older adults a direct voice in product improvement</li>
+          <li>Helps startups understand real usability challenges</li>
+          <li>Creates stronger connections between innovation and actual user needs</li>
+          <li>Makes the AgeTech ecosystem more inclusive and practical</li>
         </ul>
       </div>
     </div>
-
-    <footer>
-      <strong>How this is different from Waterlily:</strong> This prototype is not about long-term care forecasting
-      or financial prediction. It is specifically focused on helping AgeTech Connect become more user-centered by
-      allowing older adults to discover and shape innovation directly.
-    </footer>
   </div>
 </body>
 </html>
