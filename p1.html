@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgeTech Connect - Older Adult Feedback Portal</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+    }
+
+    header {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: white;
+      padding: 28px 40px;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 32px;
+    }
+
+    header p {
+      margin: 0;
+      max-width: 780px;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 24px auto;
+      padding: 0 20px 30px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      border: 1px solid #e5e7eb;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 22px;
+    }
+
+    .muted {
+      color: #6b7280;
+      line-height: 1.6;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .pill {
+      background: #eef2ff;
+      color: #4338ca;
+      border: 1px solid #c7d2fe;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+
+    .stats {
+      display: grid;
+      gap: 12px;
+    }
+
+    .stat-box {
+      background: #faf5ff;
+      border: 1px solid #ddd6fe;
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .stat-box strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 6px;
+      color: #5b21b6;
+    }
+
+    .section-title {
+      margin: 28px 0 16px;
+      font-size: 24px;
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .tool-card {
+      background: white;
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.05);
+      border: 1px solid #e5e7eb;
+    }
+
+    .tool-card h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .tool-card p {
+      margin: 0 0 14px;
+      color: #6b7280;
+      line-height: 1.55;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #ede9fe;
+      color: #6d28d9;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .rating {
+      color: #f59e0b;
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: #4f46e5;
+      color: white;
+    }
+
+    .secondary {
+      background: #f3f4f6;
+      color: #111827;
+      border: 1px solid #d1d5db;
+    }
+
+    .feedback-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .feedback-box textarea {
+      width: 100%;
+      min-height: 130px;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      padding: 12px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+      margin-top: 10px;
+    }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .checklist li {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      margin-top: 28px;
+      padding: 18px 22px;
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      border-radius: 16px;
+      color: #3730a3;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .intro-grid,
+      .feedback-layout,
+      .tool-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AgeTech Connect: Older Adult Feedback Portal</h1>
+    <p>
+      This prototype shows how AgeTech Connect could improve its current model by giving older adults
+      a direct role in exploring, testing, and reviewing technologies being developed for them.
+      Instead of only supporting startups behind the scenes, this version makes older adults active participants.
+    </p>
+  </header>
+
+  <div class="container">
+    <div class="intro-grid">
+      <div class="card">
+        <h2>Why this improvement matters</h2>
+        <p class="muted">
+          AgeTech Connect already does a strong job of building innovation and connecting startups, investors,
+          and healthcare partners. However, one limitation is that older adults are often not directly involved in the
+          experience. This portal closes that gap by creating a simple space where older adults can explore tools,
+          try early concepts, and share feedback that helps improve real products.
+        </p>
+        <div class="pill-row">
+          <span class="pill">Technology Discovery</span>
+          <span class="pill">User Testing</span>
+          <span class="pill">Direct Feedback</span>
+          <span class="pill">Inclusive Innovation</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Portal Snapshot</h2>
+        <div class="stats">
+          <div class="stat-box">
+            <strong>12</strong>
+            Technologies available to review
+          </div>
+          <div class="stat-box">
+            <strong>4</strong>
+            Pilot-ready tools this month
+          </div>
+          <div class="stat-box">
+            <strong>86%</strong>
+            Users found descriptions easy to understand
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Featured technologies to explore</h2>
+    <div class="tool-grid">
+      <div class="tool-card">
+        <div class="tag">Aging in Place</div>
+        <h3>Smart Fall Detection Band</h3>
+        <div class="rating">★★★★☆</div>
+        <p>
+          A wearable device that detects sudden falls and alerts a caregiver or emergency contact.
+          Designed for older adults who want to remain safe while living independently.
+        </p>
+        <div class="buttons">
+          <button class="primary">Try Demo</button>
+          <button class="secondary">Give Feedback</button>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tag">Health Support</div>
+        <h3>Medication Reminder App</h3>
+        <div class="rating">★★★★★</div>
+        <p>
+          A simple daily reminder app with large text, voice alerts, and caregiver syncing
+          for medications and appointments.
+        </p>
+        <div class="buttons">
+          <button class="primary">Try Demo</button>
+          <button class="secondary">Give Feedback</button>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tag">Social Connection</div>
+        <h3>Family Video Check-In Tool</h3>
+        <div class="rating">★★★★☆</div>
+        <p>
+          A simplified communication tool that helps older adults join family video calls
+          without needing to manage multiple steps or confusing app settings.
+        </p>
+        <div class="buttons">
+          <button class="primary">Try Demo</button>
+          <button class="secondary">Give Feedback</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="feedback-layout">
+      <div class="card feedback-box">
+        <h2>Older adult feedback form</h2>
+        <p class="muted">
+          This section shows how AgeTech Connect could collect user feedback directly from older adults
+          before technologies are scaled more widely.
+        </p>
+        <label for="feedback"><strong>What was easy or difficult to use?</strong></label>
+        <textarea id="feedback" placeholder="Example: I liked the large text, but the setup instructions felt too long."></textarea>
+        <div class="buttons" style="margin-top:12px;">
+          <button class="primary">Submit Feedback</button>
+          <button class="secondary">Save for Later</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>What AgeTech Connect learns</h2>
+        <ul class="checklist">
+          <li><strong>Ease of use:</strong> Are directions simple enough for older adults?</li>
+          <li><strong>Accessibility:</strong> Does the product use readable text and clear navigation?</li>
+          <li><strong>Value:</strong> Does the tool actually solve a real problem?</li>
+          <li><strong>Trust:</strong> Would users feel comfortable using it at home?</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      <strong>How this is different from Waterlily:</strong> This prototype is not about long-term care forecasting
+      or financial prediction. It is specifically focused on helping AgeTech Connect become more user-centered by
+      allowing older adults to discover and shape innovation directly.
+    </footer>
+  </div>
+</body>
+</html>
